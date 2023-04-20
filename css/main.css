@@ -1,0 +1,419 @@
+/*
+    main.css 
+    Ching Ziyuan
+*/
+
+
+/* importing fonts */
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../font/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../font/OpenSans-Light.ttf);
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../font/OpenSans-Light.ttf);
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../font/OpenSans-Bold.ttf);
+    font-weight: bold;
+}
+
+
+/* Resets padding and margin for all elements */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* using arial as a fallback in case open sans doesn't work; arial
+is also available by default in all major OS 
+declared background-color in order to override html's background color 
+flex-start is used to align flexboxes to the left, useful when they're in
+columns*/
+
+body {
+    background-color: #000000;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 1em;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0 0 10px 0;
+}
+
+
+/* semantic elements that I ignored until I finished 90% of my website,
+not too sure if that's how you use them but I'm using them as glorified
+div flexboxes, pretty sure they just have to say something about what's in them */
+
+section,
+div {
+    display: flex;
+}
+
+address {
+    font-style: normal;
+}
+
+
+/* I use divs mainly for flexboxes, so let them inherit this */
+
+div {
+    display: flex;
+}
+
+
+/* there's a bit of whitespace below the page, so workaround with this, since the footer
+is in a div, it can't fill up the entirety of the whitespace by itself */
+
+html {
+    background-color: #000000;
+}
+
+a {
+    color: #0065b3;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: lighter;
+    color: white;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: lighter;
+    margin-top: 20px;
+    color: white;
+}
+
+h3 {
+    font-size: 4em;
+    font-weight: bold;
+    color: white;
+}
+
+p {
+    font-size: 1.5em;
+    margin-top: 10px;
+    color: white;
+}
+
+hr {
+    width: 100%;
+    border: 2px solid black;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-position: outside;
+    padding: 0.5em 0 0 3em;
+}
+
+li {
+    padding-bottom: 10px;
+}
+
+footer {
+    background-color: #666666;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+.footer_button {
+    color: #66bd63;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    margin: 5px 0;
+}
+
+.footer_button:hover {
+    color: #629c44;
+    transition: 0.05s ease-in;
+}
+
+.footer_button:active {
+    color: #ffffff;
+    transition: 0.05s ease-in;
+}
+
+.subtitle {
+    color: #66bd63;
+    font-size: 1em;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.options_p {
+    display: inline;
+}
+
+.options_h1 {
+    display: block;
+}
+
+.datepicker {
+    margin-top: 10px;
+    padding: 5px 5px;
+    width: 50%;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 1em;
+    background-color: #444444;
+    color: white;
+    border: none;
+}
+
+.input {
+    display: inline;
+    margin-left: 0;
+    float: right;
+    margin-right: 10%;
+    padding: 5px 5px;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 1em;
+    background-color: #444444;
+    color: white;
+    border: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.subbutton {
+    padding: 5px;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 1em;
+    background-color: #629c44;
+    color: white;
+    border: none;
+}
+
+
+/* let flexible objects wrap, otherwise they'll print in columns */
+
+.default_wrapper {
+    margin: 20px;
+    flex-wrap: wrap;
+}
+
+.footer_wrapper {
+    background-color: #251d5a;
+}
+
+
+/* adding a bit of margin to the footer p so that it wouldn't be too thin */
+
+.footer_wrapper p {
+    margin: 20px 0 0 20px;
+}
+
+
+/* Flex Box Styling */
+
+.flex_box_default {
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 50px;
+    background-color: #38383b;
+    border-radius: 25px;
+}
+
+
+/* declared flex-direction as column so that the text stacks on top of one another instead
+of displaying in a row */
+
+
+/* margin top is greater in the 1/3 box because it's used for images mostly,
+and because text has some "padding" that is not modifiable (inherent to the ASCII character), this is used to make
+images flush with titles*/
+
+.flex_box_one_third {
+    flex: 33%;
+    flex-direction: column;
+    margin: 30px 20px 0 20px;
+}
+
+.flex_box_two_third {
+    flex: 66%;
+    flex-direction: column;
+    margin: 20px 20px 0 20px;
+}
+
+.flex_box_one_third_text {
+    flex: 33%;
+    flex-direction: column;
+    margin: 20px 20px 0 20px;
+}
+
+.flex_box_one_third_options {
+    flex: 33%;
+    flex-direction: column;
+    margin: 30px 20px 0 20px;
+}
+
+.flex_box_two_third_options {
+    flex: 66%;
+    flex-direction: column;
+    margin: 20px 20px 0 20px;
+}
+
+
+/* used for flex boxes that directly contain elements in it rather than containing
+flex boxes; this is used when a picture is not needed inside the flex box */
+
+.flex_box_full {
+    flex: 100%;
+    flex-direction: column;
+    margin: 20px 20px 0 20px;
+}
+
+
+/* Desktop changes:
+Just display flexboxes in a row configuration instead of column.
+*/
+
+@media screen and (min-width: 800px) {
+    .flex_box_default {
+        flex-direction: row;
+        background-color: #38383b;
+    }
+}
+
+
+/* Nav Styling */
+
+nav ul {
+    background-color: #38383b;
+    padding: 0;
+    overflow: hidden
+}
+
+nav li {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+/* display them as blocks with 100% width because on a mobile it might be hard 
+to tap the word exactly */
+
+nav a {
+    float: left;
+    color: white;
+    padding: 1.1em 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    width: 100%;
+}
+
+nav a:hover {
+    background-color: #629c44;
+    transition: 0.15s ease-in;
+}
+
+nav a:active {
+    background-color: #66bd63;
+    transition: 0.05s ease-in;
+}
+
+
+/* the dropdown nav menu */
+
+#mobile_nav_container {
+    background-color: #444444;
+    display: block;
+    height: 3.95em;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+
+/* the "bar" nav menu */
+
+#desktop_nav_container {
+    display: none;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+li #current_page {
+    text-decoration: underline;
+}
+
+
+/* Desktop changes:
+Hides the hamburger menu and its container.
+Set the display of the links from block to inline so that
+it displays horizontally, and show the links' container.
+Set li a padding to 1.1em to ensure that the nav elements will be spread out
+in desktop mode.
+*/
+
+@media screen and (min-width: 800px) {
+    #mobile_nav_container {
+        display: none;
+    }
+    #hamburger_menu {
+        display: none;
+    }
+    li a {
+        display: inline;
+        width: auto;
+        padding: 1.1em;
+    }
+    #desktop_nav_container {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .input {
+        display: block;
+        float: none;
+    }
+    .options_p {
+        display: block;
+    }
+}
+
+
+/* inherits flex by default, which will make the buttons stick to each other 
+without margins, so change it to block */
+
+.viz_selection {
+    display: block;
+}
+
+@media screen and (min-width: 800px) {
+    th,
+    td {
+        padding: 20px;
+    }
+    th {
+        font-size: 1.5em;
+    }
+    td {
+        font-size: 1.3em
+    }
+}

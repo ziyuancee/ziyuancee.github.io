@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Ching Ziyuan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PiDetect</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="manifest" href="manifest.webmanifest" />
+
+</head>
+
+<script src="./js/swcaller.js"></script>
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <!-- html of the nav is wholly inspired by https://responsivenavigation.net/examples/simple-toggle/#
+            js and css work was done by myself -->
+            <div id="mobile_nav_container">
+
+                <a id="hamburger_menu" title="Click to open menu">☰</a>
+
+            </div>
+
+            <div id="desktop_nav_container">
+
+                <ul>
+
+                    <li><a href="index.html" title="Data readings and visualisation, along with historical data">Dashboard</a></li>
+                    <li><a href="settings.html" id="current_page" title="Set API keys, preferences, and more">Settings</a></li>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+    <br>
+    <br>
+    <br>
+    <div class="default_wrapper">
+
+        <section class="flex_box_default">
+            <!--section is used when a chunk of text is self-contained (i.e. you can move it elsewhere and it'll still make sense without context)-->
+            <section class="flex_box_two_third_options">
+                <form id="settings_form" onsubmit="return false">
+                    <h1 class="options_h1">Adafruit IO Settings</h1>
+                    <p class="options_p">Username</p>
+                    <input type="text" class="input" id="adauser">
+                    <br><br>
+                    <p class="options_p">API key</p>
+                    <input type="text" class="input" id="adaapi">
+                    <br><br>
+                    <h1 class="options_h1">Firebase Settings</h1>
+                    <p class="options_p">API Key</p>
+                    <input type="text" class="input" id="fbapi">
+                    <br><br>
+                    <p class="options_p">Auth Domain</p>
+                    <input type="text" class="input" id="fbauth">
+                    <br><br>
+                    <p class="options_p">Project ID</p>
+                    <input type="text" class="input" id="fbproject">
+                    <br><br>
+                    <p class="options_p">Storage Bucket</p>
+                    <input type="text" class="input" id="fbstorage">
+                    <br><br>
+                    <p class="options_p">Messenging Sender ID</p>
+                    <input type="text" class="input" id="fbsender">
+                    <br><br>
+                    <p class="options_p">App ID</p>
+                    <input type="text" class="input" id="fbapp">
+                    <br><br>
+                    <p class="options_p">Measurement ID</p>
+                    <input type="text" class="input" id="fbmeasurement">
+                    <br><br>
+                    <p class="options_p">Your Token</p>
+                    <input type="text" class="input" id="fbtoken" onkeydown="return false">
+                    <br><br>
+                    <input type="submit" id="option_submit" class="subbutton" value="Save Settings">
+                </form>
+
+            </section>
+
+            <section class="flex_box_one_third_options">
+
+            </section>
+
+        </section>
+
+    </div>
+
+    <footer id="notif_prompt">
+        <button class="footer_button"> Please click here to enable notifications and to dismiss this message </button>
+    </footer>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.umd.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.1/chartjs-adapter-moment.min.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-messaging.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/settings.js"></script>

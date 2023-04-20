@@ -1,0 +1,17 @@
+{
+    "name": "PiDetect",
+    "short_name": "PiDetect",
+    "description": "A historical and live data visualiser powered by the Raspberry Pi",
+    "icons": [{
+        "src": "img/icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }],
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "theme_color": "#B12A34",
+    "background_color": "#B12A34",
+    "gcm_user_visible_only": true,
+    "gcm_sender_id": "880568318733"
+
+}

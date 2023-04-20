@@ -1,0 +1,4 @@
+for the website:
+create a different feed that allows the pi to send dangerous values to
+if feed empty, don't send notifs
+use background sync to check

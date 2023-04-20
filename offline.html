@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Ching Ziyuan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PiDetect</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="manifest" href="manifest.webmanifest" />
+
+</head>
+
+<script src="./js/swcaller.js"></script>
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <!-- html of the nav is wholly inspired by https://responsivenavigation.net/examples/simple-toggle/#
+            js and css work was done by myself -->
+            <div id="mobile_nav_container">
+
+                <a id="hamburger_menu" title="Click to open menu">☰</a>
+
+            </div>
+
+            <div id="desktop_nav_container">
+
+                <ul>
+
+                    <li><a href="index.html" id="current_page" title="Data readings and visualisation, along with historical data">Dashboard</a></li>
+                    <li><a href="settings.html" title="Set API keys, preferences, and more">Settings</a></li>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+    <br>
+    <br>
+    <br>
+    <div class="default_wrapper">
+
+        <section class="flex_box_default">
+            <section class="flex_box_two_third">
+
+                <h1>Latest Alerts</h1>
+                <p id="cotime">---</p>
+                <p id="codanger">CO levels OK</p>
+                <br>
+                <p id="temptime">---</p>
+                <p id="tempdanger">Temperature levels OK</p>
+
+            </section>
+
+            <section class="flex_box_one_third">
+
+            </section>
+
+        </section>
+
+        <hr>
+        <section class="flex_box_default">
+            <section class="flex_box_two_third">
+
+                <h1>CO</h1>
+                <h3 id="cotext">NIL</h3>
+                <p id="coupdate" class="subtitle">---</p>
+
+            </section>
+
+            <section class="flex_box_one_third">
+                <form id="coform" onsubmit="return false">
+                    <canvas id="cochart"></canvas>
+                    <br>
+                    <p>Start of chart:()</p>
+                    <input type="date" class="datepicker" id="costart" value="2023-01-01" onkeydown="return false">
+                    <input type="submit" id="cosubmit" class="subbutton" value="Render Graph">
+                </form>
+            </section>
+
+        </section>
+
+        <hr>
+        <section class="flex_box_default">
+            <section class="flex_box_two_third">
+
+                <h1>CO</h1>
+                <h3 id="temptext">NIL</h3>
+                <p id="tempupdate" class="subtitle">---</p>
+
+            </section>
+
+            <section class="flex_box_one_third">
+            </section>
+
+        </section>
+
+    </div>
+
+    <footer id="notif_prompt">
+        <button class="footer_button"> Please click here to enable notifications and to dismiss this message </button>
+    </footer>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.umd.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.1/chartjs-adapter-moment.min.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js" type="module"></script>
+<script src="./js/main.js"></script>
