@@ -13,19 +13,35 @@ hamburgerMenu.addEventListener("click", function() {
     }
 });
 window.onresize = function() {
-        /* this ensures that the menu stays visible in desktop mode, if the dropdown menu 
-        wasn't opened and when the user goes from mobile to desktop (e.g. tablets changing
-        orientation)
-        */
-        if ((menuElements.style.display === "none" && window.innerWidth > 800) || (menuElements.style.display === "block" && window.innerWidth <= 800)) {
-            if (menuElements.style.display === "block") {
-                menuElements.style.display = "none";
-            } else {
-                menuElements.style.display = "block";
-            }
+    /* this ensures that the menu stays visible in desktop mode, if the dropdown menu 
+    wasn't opened and when the user goes from mobile to desktop (e.g. tablets changing
+    orientation)
+    */
+    if ((menuElements.style.display === "none" && window.innerWidth > 800) || (menuElements.style.display === "block" && window.innerWidth <= 800)) {
+        if (menuElements.style.display === "block") {
+            menuElements.style.display = "none";
+        } else {
+            menuElements.style.display = "block";
         }
     }
-    // -- API KEYS, FIREBASE CONFIGS, AND ADAFRUIT IO FEED LINKS. CHANGE AS NEEDED --
+}
+notif_prompt.addEventListener("click", function() {
+
+    Notification.requestPermission()
+        .then(function(permission) {
+            console.log('permiss', permission)
+            if (permission === "granted") {
+                notif_prompt.remove();
+                location.reload();
+            }
+        });
+});
+
+if (Notification.permission === "granted") {
+    notif_prompt.remove();
+}
+
+// -- API KEYS, FIREBASE CONFIGS, AND ADAFRUIT IO FEED LINKS. CHANGE AS NEEDED --
 var adaUserCookie = Cookies.get('adauser');
 var adaApiCookie = Cookies.get('adaapi');
 var fbApiCookie = Cookies.get('fbapi');
@@ -71,21 +87,7 @@ messaging.onMessage(payload => {
 
 
 
-notif_prompt.addEventListener("click", function() {
 
-    Notification.requestPermission()
-        .then(function(permission) {
-            console.log('permiss', permission)
-            if (permission === "granted") {
-                notif_prompt.remove();
-                location.reload();
-            }
-        });
-});
-
-if (Notification.permission === "granted") {
-    notif_prompt.remove();
-}
 
 function coDangerLatest(isIndex) {
     return new Promise(async function cb(resolve, reject) {
