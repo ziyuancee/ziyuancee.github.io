@@ -5,8 +5,27 @@ var minsSinceLastTempNotif = null;
 navigator.serviceWorker.register('/firebase-messaging-sw.js');
 var hamburgerMenu = document.getElementById('hamburger_menu');
 var menuElements = document.getElementById('desktop_nav_container');
-
-// -- API KEYS, FIREBASE CONFIGS, AND ADAFRUIT IO FEED LINKS. CHANGE AS NEEDED --
+hamburgerMenu.addEventListener("click", function() {
+    if (menuElements.style.display === "block") {
+        menuElements.style.display = "none";
+    } else {
+        menuElements.style.display = "block";
+    }
+});
+window.onresize = function() {
+        /* this ensures that the menu stays visible in desktop mode, if the dropdown menu 
+        wasn't opened and when the user goes from mobile to desktop (e.g. tablets changing
+        orientation)
+        */
+        if ((menuElements.style.display === "none" && window.innerWidth > 800) || (menuElements.style.display === "block" && window.innerWidth <= 800)) {
+            if (menuElements.style.display === "block") {
+                menuElements.style.display = "none";
+            } else {
+                menuElements.style.display = "block";
+            }
+        }
+    }
+    // -- API KEYS, FIREBASE CONFIGS, AND ADAFRUIT IO FEED LINKS. CHANGE AS NEEDED --
 var adaUserCookie = Cookies.get('adauser');
 var adaApiCookie = Cookies.get('adaapi');
 var fbApiCookie = Cookies.get('fbapi');
@@ -51,26 +70,7 @@ messaging.onMessage(payload => {
 */
 
 
-hamburgerMenu.addEventListener("click", function() {
-    if (menuElements.style.display === "block") {
-        menuElements.style.display = "none";
-    } else {
-        menuElements.style.display = "block";
-    }
-});
-window.onresize = function() {
-    /* this ensures that the menu stays visible in desktop mode, if the dropdown menu 
-    wasn't opened and when the user goes from mobile to desktop (e.g. tablets changing
-    orientation)
-    */
-    if ((menuElements.style.display === "none" && window.innerWidth > 800) || (menuElements.style.display === "block" && window.innerWidth <= 800)) {
-        if (menuElements.style.display === "block") {
-            menuElements.style.display = "none";
-        } else {
-            menuElements.style.display = "block";
-        }
-    }
-}
+
 notif_prompt.addEventListener("click", function() {
 
     Notification.requestPermission()
