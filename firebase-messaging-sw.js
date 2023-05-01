@@ -56,7 +56,7 @@ self.addEventListener('install', (event) => {
 });
 */
 
-var ASSETS = ['/offline.html', '/CSS/main.css'];
+var ASSETS = ['/offline.html', '/css/main.css'];
 
 self.oninstall = function(evt) {
     evt.waitUntil(caches.open('offline').then(function(cache) {
