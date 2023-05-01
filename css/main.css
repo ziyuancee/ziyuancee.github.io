@@ -72,10 +72,12 @@ h2 {
     color: white;
 }
 
-h3 {
+h3,
+.readings {
     font-size: 4em;
     font-weight: bold;
     color: white;
+    margin-top: 0px;
 }
 
 p,
