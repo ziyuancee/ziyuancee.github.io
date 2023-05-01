@@ -45,6 +45,7 @@ const CACHE_NAME = 'offline';
 // Customize this with a different URL if needed.
 const OFFLINE_URL = 'offline.html';
 
+/*
 self.addEventListener('install', (event) => {
     event.waitUntil((async() => {
         const cache = await caches.open(CACHE_NAME);
@@ -53,9 +54,9 @@ self.addEventListener('install', (event) => {
         await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
     })());
 });
+*/
 
-
-var ASSETS = ['/offline.html', '/style/main.css'];
+var ASSETS = ['/offline.html', '/CSS/main.css'];
 
 self.oninstall = function(evt) {
     evt.waitUntil(caches.open('offline').then(function(cache) {
