@@ -51,11 +51,13 @@
             <section class="flex_box_two_third">
 
                 <h1>Latest Alerts</h1>
+                <p>You are offline.</p>
+                <p>Please navigate to the dashboard through the navigation bar whenever you are back online.</p>
                 <p id="cotime">---</p>
-                <p id="codanger">CO levels OK</p>
+                <p id="codanger">Offline, unable to obtain data</p>
                 <br>
                 <p id="temptime">---</p>
-                <p id="tempdanger">Temperature levels OK</p>
+                <p id="tempdanger">Offline, unable to obtain data</p>
 
             </section>
 
@@ -70,7 +72,7 @@
             <section class="flex_box_two_third">
 
                 <h1>CO</h1>
-                <h3 id="cotext">NIL</h3>
+                <h3 id="cotext">Offline, unable to obtain data</h3>
                 <p id="coupdate" class="subtitle">---</p>
 
             </section>
@@ -79,7 +81,7 @@
                 <form id="coform" onsubmit="return false">
                     <canvas id="cochart"></canvas>
                     <br>
-                    <p>Start of chart:()</p>
+                    <p>Start of chart:</p>
                     <input type="date" class="datepicker" id="costart" value="2023-01-01" onkeydown="return false">
                     <input type="submit" id="cosubmit" class="subbutton" value="Render Graph">
                 </form>
@@ -91,26 +93,34 @@
         <section class="flex_box_default">
             <section class="flex_box_two_third">
 
-                <h1>CO</h1>
-                <h3 id="temptext">NIL</h3>
+                <h1>Temp.</h1>
+                <h3 id="temptext">Offline, unable to obtain data</h3>
                 <p id="tempupdate" class="subtitle">---</p>
 
             </section>
 
             <section class="flex_box_one_third">
+                <form id="tempform" onsubmit="return false">
+                    <canvas id="tempchart"></canvas>
+                    <br>
+                    <p>Start of chart:</p>
+                    <input type="date" class="datepicker" id="tempstart" value="2023-01-01" onkeydown="return false">
+                    <input type="submit" id="tempsubmit" class="subbutton" value="Render Graph">
+                </form>
             </section>
 
         </section>
 
+        <hr>
+        <section class="flex_box_default">
+            <section class="flex_box_two_third">
+
+                <h1>Other Resources</h1>
+                <p> <a href="https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/" title="External link to NHS' page on heatstroke">NHS' heat stroke factsheet</a></p>
+
+            </section>
+
+        </section>
     </div>
 
-    <footer id="notif_prompt">
-        <button class="footer_button"> Please click here to enable notifications and to dismiss this message </button>
-    </footer>
-
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.umd.js" type="module"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.1/chartjs-adapter-moment.min.js" type="module"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js" type="module"></script>
-<script src="./js/main.js"></script>

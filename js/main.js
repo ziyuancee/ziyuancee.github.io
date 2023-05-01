@@ -12,6 +12,7 @@ hamburgerMenu.addEventListener("click", function() {
         menuElements.style.display = "block";
     }
 });
+refreshCookies();
 window.onresize = function() {
     /* this ensures that the menu stays visible in desktop mode, if the dropdown menu 
     wasn't opened and when the user goes from mobile to desktop (e.g. tablets changing
@@ -187,4 +188,37 @@ function notify(title, body) {
         body: body,
     };
     return new Notification(title, options);
+}
+
+function refreshCookies() {
+    if (adaUserCookie !== undefined) {
+        Cookies.set('adauser', adaUserCookie, { expires: 365 })
+    }
+    if (adaApiCookie !== undefined) {
+        Cookies.set('adaapi', adaApiCookie, { expires: 365 })
+    }
+    if (fbApiCookie !== undefined) {
+        Cookies.set('fbapi', fbApiCookie, { expires: 365 })
+    }
+    if (fbAuthCookie !== undefined) {
+        Cookies.set('fbauth', fbAuthCookie, { expires: 365 })
+    }
+    if (fbProjectCookie !== undefined) {
+        Cookies.set('fbproject', fbProjectCookie, { expires: 365 })
+    }
+    if (fbStorageCookie !== undefined) {
+        Cookies.set('fbstorage', fbStorageCookie, { expires: 365 })
+    }
+    if (fbSenderCookie !== undefined) {
+        Cookies.set('fbsender', fbSenderCookie, { expires: 365 })
+    }
+    if (fbAppCookie !== undefined) {
+        Cookies.set('fbapp', fbAppCookie, { expires: 365 })
+    }
+    if (fbMeasurementCookie !== undefined) {
+        Cookies.set('fbmeasurement', fbMeasurementCookie, { expires: 365 })
+    }
+    if (fbTokenCookie !== undefined) {
+        Cookies.set('fbtoken', fbTokenCookie, { expires: 365 })
+    }
 }

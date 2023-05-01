@@ -16,6 +16,8 @@ Copyright 2015, 2019 Google Inc. All Rights Reserved.
 
 /*
 Based on https://firebase.google.com/docs/cloud-messaging/js/receive#web-version-8_1
+https://googlechrome.github.io/samples/service-worker/custom-offline-page/
+https://stackoverflow.com/questions/38049623/adding-images-and-css-files-alongside-html-file-in-service-worker-for-offline-ca
 */
 const messagingA = "880568";
 const messagingB = "318733";
@@ -42,7 +44,7 @@ const OFFLINE_VERSION = 1;
 const CACHE_NAME = 'offline';
 // Customize this with a different URL if needed.
 const OFFLINE_URL = 'offline.html';
-
+/*
 self.addEventListener('install', (event) => {
     event.waitUntil((async() => {
         const cache = await caches.open(CACHE_NAME);
@@ -51,6 +53,15 @@ self.addEventListener('install', (event) => {
         await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
     })());
 });
+*/
+
+var ASSETS = ['/offline.html', '/style/main.css'];
+
+self.oninstall = function(evt) {
+    evt.waitUntil(caches.open('offline').then(function(cache) {
+        return cache.addAll(ASSETS);
+    }))
+};
 
 self.addEventListener('activate', (event) => {
     event.waitUntil((async() => {
