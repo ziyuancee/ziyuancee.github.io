@@ -78,7 +78,8 @@ h3 {
     color: white;
 }
 
-p {
+p,
+label {
     font-size: 1.5em;
     margin-top: 10px;
     color: white;
@@ -100,7 +101,7 @@ li {
 }
 
 footer {
-    background-color: #666666;
+    background-color: #4D4D4D;
     width: 100%;
     text-align: center;
     bottom: 0;
@@ -173,7 +174,7 @@ footer {
     padding: 5px;
     font-family: 'Open Sans', 'Arial', sans-serif;
     font-size: 1em;
-    background-color: #629c44;
+    background-color: #4F7C36;
     color: white;
     border: none;
 }

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Ching Ziyuan" />
+    <meta name="description" content="A webapp developed to display the sensor readings from a Raspberry Pi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="./css/main.css">
@@ -79,7 +80,8 @@
                 <form id="coform" onsubmit="return false">
                     <canvas id="cochart"></canvas>
                     <br>
-                    <p>Start of chart:</p>
+                    <label for="costart">Start of chart:</label>
+                    <br>
                     <input type="date" class="datepicker" id="costart" value="2023-01-01" onkeydown="return false">
                     <input type="submit" id="cosubmit" class="subbutton" value="Render Graph">
                 </form>
@@ -101,7 +103,8 @@
                 <form id="tempform" onsubmit="return false">
                     <canvas id="tempchart"></canvas>
                     <br>
-                    <p>Start of chart:</p>
+                    <label for="tempstart">Start of chart:</label>
+                    <br>
                     <input type="date" class="datepicker" id="tempstart" value="2023-01-01" onkeydown="return false">
                     <input type="submit" id="tempsubmit" class="subbutton" value="Render Graph">
                 </form>
