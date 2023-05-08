@@ -27,6 +27,7 @@ optionSubmit.addEventListener("click", function() {
             Cookies.set(valueArrayNoToken[i], document.getElementById(valueArrayNoToken[i]).value, { expires: 365 });
         }
     }
+    location.reload();
 });
 if (fbTokenCookie !== undefined && adaUserCookie !== undefined && adaApiCookie !== undefined) {
     optionUpdate.addEventListener("click", function() {

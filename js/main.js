@@ -53,6 +53,7 @@ var fbSenderCookie = Cookies.get('fbsender');
 var fbAppCookie = Cookies.get('fbapp');
 var fbMeasurementCookie = Cookies.get('fbmeasurement');
 var fbTokenCookie = Cookies.get('fbtoken');
+
 /*
 Based on https://firebase.google.com/docs/cloud-messaging/js/receive#web-version-8_1
 */
@@ -72,9 +73,7 @@ messaging
         return messaging.getToken();
     })
     .then(token => {
-        console.log("here's my token");
         Cookies.set('fbtoken', token, { expires: 365 });
-        console.log(token);
     })
     .catch(err => {
         console.log(err);
@@ -89,34 +88,38 @@ messaging.onMessage(payload => {
 
 
 
-
+//coDangerLatest -- gets the latest dangerous CO value from Adafruit IO
+//isIndex - boolean, true if on index page, false if on other page
 function coDangerLatest(isIndex) {
     return new Promise(async function cb(resolve, reject) {
-        // do async thing
+        //wait to get response code
         const res = await fetch('https://io.adafruit.com/api/v2/' + adaUserCookie + '/feeds/codanger/data?limit=1', {
                 headers: {
                     'X-AIO-Key': adaApiCookie
                 }
             })
+            //process response code
             .then(response => {
                 if (response.ok) return response.json();
                 else console.log(response.json());
             })
+            //process body of response, check if it's null
             .then((text) => {
                 if (text[0] != null) {
                     var lastUpdated = new Date(Date.parse(text[0].created_at)).toLocaleString("en-GB");
                     var lastUpdatedUnix = Date.parse(text[0].created_at);
                     var currDate = new Date();
                     var minutesDiff = minDiff(lastUpdatedUnix, currDate);
+                    //check if is index, as index page has different elements
                     if (isIndex) {
                         coTime.innerHTML = lastUpdated;
                         coDanger.innerHTML = text[0].value + " ppm";
                     }
+                    //check if a notification has been sent on this load, and if it has been more than 10 minutes since the last notification if so
                     if (minsSinceLastTempNotif != null) {
                         minsSinceLastCONotif = minDiff(notifTime, currDate);
                     }
-                    console.log(minutesDiff);
-                    console.log(minsSinceLastCONotif);
+                    //checks if reading was taken within the last 20 minutes, and if a notification has been sent within the last 10 minutes/if a notification has been sent at all
                     if (minutesDiff <= 20 && (minsSinceLastCONotif == null || minsSinceLastCONotif >= 10) && text[0].value >= 70) {
                         minsSinceLastCONotif = minDiff(notifTime, currDate);
                         notifTime = Date.now();
@@ -133,34 +136,40 @@ function coDangerLatest(isIndex) {
     })
 }
 
+//tempDangerLatest -- gets the latest dangerous temperature value from Adafruit IO
+//isIndex - boolean, true if on index page, false if on other page
 function tempDangerLatest(isIndex) {
     return new Promise(async function cb(resolve, reject) {
-        // do async thing
+        //wait to get response code
         const res = await fetch('https://io.adafruit.com/api/v2/' + adaUserCookie + '/feeds/tempdanger/data?limit=1', {
                 headers: {
                     'X-AIO-Key': adaApiCookie
                 }
             })
+            //process response code
             .then(response => {
                 if (response.ok) return response.json();
                 else console.log("error");
             })
+            //process body of response, check if it's null
             .then((text) => {
                 if (text[0] != null) {
                     var lastUpdated = new Date(Date.parse(text[0].created_at)).toLocaleString("en-GB");
                     var lastUpdatedUnix = Date.parse(text[0].created_at);
                     var currDate = new Date();
                     var minutesDiff = minDiff(lastUpdatedUnix, currDate);
+                    //check if is index, as index page has different elements
                     if (isIndex) {
                         tempTime.innerHTML = lastUpdated;
                         tempDanger.innerHTML = text[0].value + " C";
                     }
-
+                    //check if a notification has been sent on this load, and if it has been more than 10 minutes since the last notification if so
                     if (minsSinceLastTempNotif != null) {
                         minsSinceLastTempNotif = minDiff(notifTime, currDate);
                     }
                     console.log(minutesDiff);
                     console.log(minsSinceLastTempNotif);
+                    //checks if reading was taken within the last 20 minutes, and if a notification has been sent within the last 10 minutes/if a notification has been sent at all
                     if (minutesDiff <= 20 && (minsSinceLastTempNotif == null || minsSinceLastTempNotif >= 10) && text[0].value >= 35) {
                         minsSinceLastTempNotif = minDiff(notifTime, currDate);
                         notifTime = Date.now();
@@ -177,12 +186,13 @@ function tempDangerLatest(isIndex) {
         setTimeout(function() { cb(resolve, reject); }, 5000);
     })
 }
-
+//calculate difference of times in minutes
 function minDiff(date1, date2) {
     var diff = Math.abs(date1 - date2);
     return diff / 1000 / 60;
 }
 
+//send in-app notifications
 function notify(title, body) {
     const options = {
         body: body,
@@ -190,6 +200,7 @@ function notify(title, body) {
     return new Notification(title, options);
 }
 
+//refreshes cookie expiry dates on load
 function refreshCookies() {
     if (adaUserCookie !== undefined) {
         Cookies.set('adauser', adaUserCookie, { expires: 365 })
